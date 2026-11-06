@@ -1,0 +1,32 @@
+# Production profile: start with SPRING_PROFILES_ACTIVE=prod.
+# DB_URL, DB_USERNAME and DB_PASSWORD have no usable defaults here and must be provided.
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    hikari:
+      maximum-pool-size: ${DB_POOL_SIZE:20}
+  flyway:
+    # Never allow "flyway clean" to wipe a production database.
+    clean-disabled: true
+
+server:
+  forward-headers-strategy: framework
+  servlet:
+    session:
+      cookie:
+        # Session cookies only travel over HTTPS in production.
+        secure: ${COOKIE_SECURE:true}
+
+# API documentation is disabled in production unless explicitly enabled.
+springdoc:
+  api-docs:
+    enabled: ${API_DOCS_ENABLED:false}
+  swagger-ui:
+    enabled: ${API_DOCS_ENABLED:false}
+
+logging:
+  level:
+    root: INFO
+    com.smartstudy: INFO

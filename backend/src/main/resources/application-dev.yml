@@ -1,0 +1,6 @@
+# Local development profile (active by default).
+logging:
+  level:
+    com.smartstudy: DEBUG
+    org.flywaydb: INFO
+    org.hibernate.SQL: WARN

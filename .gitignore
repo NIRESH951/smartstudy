@@ -1,0 +1,29 @@
+# ---------- secrets / local configuration ----------
+.env
+.env.*
+!.env.example
+!frontend/.env.demo
+*.env
+!**/.env.example
+
+# ---------- backend (Maven / Java) ----------
+backend/target/
+backend/.mvn/wrapper/maven-wrapper.jar
+*.class
+*.log
+hs_err_pid*
+
+# ---------- frontend (Node / Vite) ----------
+frontend/node_modules/
+frontend/dist/
+frontend/coverage/
+frontend/*.tsbuildinfo
+npm-debug.log*
+
+# ---------- IDEs / OS ----------
+.idea/
+*.iml
+*.iws
+.vscode/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,21 @@
+# Automated tests run against an in-memory H2 database in MySQL compatibility mode.
+# Flyway is disabled here and Hibernate creates the tables from the entity mappings,
+# so the tests need neither MySQL nor Docker.
+spring:
+  datasource:
+    url: jdbc:h2:mem:smartstudy;MODE=MySQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;DB_CLOSE_DELAY=-1
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  flyway:
+    enabled: false
+
+smartstudy:
+  scheduling:
+    enabled: false
+
+logging:
+  level:
+    com.smartstudy: INFO
